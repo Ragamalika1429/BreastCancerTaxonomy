@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prediction Result</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: url('/static/bg.png');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.2);
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        h2 {
+            color: white;
+        }
+        .prediction-text {
+            font-size: 24px;
+            color: #00ff00; /* Green for visibility */
+        }
+        .error-text {
+            font-size: 20px;
+            color: #ff0000; /* Red for errors */
+        }
+        .graph-container {
+            margin: 20px 0;
+        }
+        .graph-container h3 {
+            color: white;
+        }
+        .back-button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+        .back-button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Breast Cancer Prediction Result</h2>
+
+        {% if prediction %}
+            <p class="prediction-text">The predicted result is: <strong>{{ prediction }}</strong></p>
+            <div class="graph-container">
+                <h3>Prediction Probability</h3>
+                <img src="data:image/png;base64,{{ graph_url_prob }}" alt="Prediction Graph">
+            </div>
+            <div class="graph-container">
+                <h3>Feature Values</h3>
+                <img src="data:image/png;base64,{{ graph_url_features }}" alt="Feature Graph">
+            </div>
+        {% elif error %}
+            <p class="error-text">Error: {{ error }}</p>
+        {% endif %}
+
+        <br>
+        <a href="/" class="back-button">Go Back</a>
+    </div>
+</body>
+</html>

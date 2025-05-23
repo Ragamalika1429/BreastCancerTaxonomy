@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Breast Cancer Prediction</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: url('static/bg.png');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.2);
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            text-align: center;
+            color: white;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            font-weight: bold;
+            color: white;
+        }
+        input {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            box-sizing: border-box;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #007bff;
+            border: none;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Breast Cancer Prediction</h2>
+        <form action="/predict" method="POST">
+            <div class="form-group">
+                <label for="radius_mean">Radius Mean:</label>
+                <input type="text" id="radius_mean" name="radius_mean" required>
+            </div>
+            <div class="form-group">
+                <label for="texture_mean">Texture Mean:</label>
+                <input type="text" id="texture_mean" name="texture_mean" required>
+            </div>
+            <div class="form-group">
+                <label for="perimeter_mean">Perimeter Mean:</label>
+                <input type="text" id="perimeter_mean" name="perimeter_mean" required>
+            </div>
+            <div class="form-group">
+                <label for="area_mean">Area Mean:</label>
+                <input type="text" id="area_mean" name="area_mean" required>
+            </div>
+            <div class="form-group">
+                <label for="smoothness_mean">Smoothness Mean:</label>
+                <input type="text" id="smoothness_mean" name="smoothness_mean" required>
+            </div>
+            <div class="form-group">
+                <button type="submit">Predict</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
